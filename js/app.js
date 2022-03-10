@@ -26,15 +26,19 @@ const reportPost = (id) => {
     showPosts(remainingPosts);
 };
 
-const displayContent = (text) => {
+let displayContent = (text) => {
+   if (text.lenght<30) {
+     return 
+   }
     return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+   
 };
 
 const switchTab = (id) => {
     if (id === "posts") {
         document.getElementById( "posts" ).style.display = "grid";
-        document.getElementById( "liked" ).style.display = "none";
-        document.getElementById( "reported" ).style.display = "none";
+        document.getElementById( "liked" ).style.display = "block";
+        document.getElementById( "reported" ).style.display = "block";
     } else if (id === "liked") {
         document.getElementById( "liked" ).style.display = "block";
         document.getElementById( "posts" ).style.display = "none";
@@ -128,9 +132,11 @@ const createPost = (post) => {
                 </div>
               </div>
       `;
-    return div;
-};
+      console.log(displayContent(post.description));
 
+    return div;
+    
+};
 const showPosts = (posts) => {
     const productsContainer = document.getElementById( "posts" );
     productsContainer.innerHTML = "";
