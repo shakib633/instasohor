@@ -27,10 +27,8 @@ const reportPost = (id) => {
 };
 
 let displayContent = (text) => {
-   if (text.lenght<30) {
-     return 
-   }
-    return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+   
+    return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
    
 };
 
